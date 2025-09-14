@@ -105,7 +105,8 @@ const MoodVibeJournal = () => {
   };
 
   return (
-    <div className={`min-h-screen transition-all duration-1000 mood-bg-${currentMood}`}>
+    <div className={`min-h-screen relative transition-all duration-1000`}>
+      <div className={`fixed inset-0 -z-10 mood-bg-${currentMood}`} aria-hidden="true" />
       <div className="container mx-auto px-4 py-8">
         <header className="text-center mb-8">
           <h1 className="text-5xl font-bold text-white mb-2 animate-float">

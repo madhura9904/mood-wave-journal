@@ -2,41 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* MoodVibe Journal Design System - All colors MUST be HSL */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
+    /* Core UI Colors */
+    --background: 240 10% 8%;
+    --foreground: 0 0% 95%;
+    --card: 240 8% 12%;
+    --card-foreground: 0 0% 95%;
+    --border: 240 8% 18%;
+    --input: 240 8% 16%;
+    --ring: 280 100% 70%;
+    
+    /* Mood Gradient Colors */
+    --happy-start: 33 100% 70%;
+    --happy-end: 51 100% 75%;
+    --calm-start: 220 80% 60%;
+    --calm-end: 180 60% 65%;
+    --energetic-start: 340 100% 65%;
+    --energetic-end: 25 100% 70%;
+    --sad-start: 220 20% 50%;
+    --sad-end: 200 30% 60%;
+    --excited-start: 320 100% 70%;
+    --excited-end: 60 100% 75%;
+    --peaceful-start: 140 60% 60%;
+    --peaceful-end: 200 70% 65%;
+    
+    /* UI Semantic Colors */
+    --primary: 280 100% 70%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 8% 20%;
+    --secondary-foreground: 0 0% 90%;
+    --muted: 240 8% 16%;
+    --muted-foreground: 0 0% 70%;
+    --accent: 280 100% 70%;
+    --accent-foreground: 0 0% 100%;
+    
+    /* Animations */
+    --gradient-speed: 8s;
+    --pulse-speed: 2s;
+    --float-speed: 6s;
+    --radius: 1rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -101,5 +108,87 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  /* Mood Gradients */
+  .mood-bg-happy {
+    background: linear-gradient(135deg, hsl(var(--happy-start)), hsl(var(--happy-end)));
+    animation: gradient-shift var(--gradient-speed) ease-in-out infinite;
+  }
+  
+  .mood-bg-calm {
+    background: linear-gradient(135deg, hsl(var(--calm-start)), hsl(var(--calm-end)));
+    animation: gradient-shift var(--gradient-speed) ease-in-out infinite;
+  }
+  
+  .mood-bg-energetic {
+    background: linear-gradient(135deg, hsl(var(--energetic-start)), hsl(var(--energetic-end)));
+    animation: gradient-shift var(--gradient-speed) ease-in-out infinite;
+  }
+  
+  .mood-bg-sad {
+    background: linear-gradient(135deg, hsl(var(--sad-start)), hsl(var(--sad-end)));
+    animation: gradient-shift var(--gradient-speed) ease-in-out infinite;
+  }
+  
+  .mood-bg-excited {
+    background: linear-gradient(135deg, hsl(var(--excited-start)), hsl(var(--excited-end)));
+    animation: gradient-shift var(--gradient-speed) ease-in-out infinite;
+  }
+  
+  .mood-bg-peaceful {
+    background: linear-gradient(135deg, hsl(var(--peaceful-start)), hsl(var(--peaceful-end)));
+    animation: gradient-shift var(--gradient-speed) ease-in-out infinite;
+  }
+
+  /* Glass morphism effects */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Floating animations */
+  .float {
+    animation: float var(--float-speed) ease-in-out infinite;
+  }
+
+  .pulse-glow {
+    animation: pulse-glow var(--pulse-speed) ease-in-out infinite;
+  }
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-size: 200% 200%;
+    background-position: left center;
+  }
+  50% {
+    background-size: 200% 200%;
+    background-position: right center;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
   }
 }

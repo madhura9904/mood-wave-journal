@@ -42,6 +42,25 @@ const MoodVibeJournal = () => {
     }
   }, [moodEntries]);
 
+  // Apply mood background to the entire page body
+  useEffect(() => {
+    const body = document.body;
+    const allMoodClasses = [
+      'mood-bg-happy',
+      'mood-bg-calm',
+      'mood-bg-energetic',
+      'mood-bg-sad',
+      'mood-bg-excited',
+      'mood-bg-peaceful',
+    ];
+    body.classList.remove(...allMoodClasses);
+    body.classList.add(`mood-bg-${currentMood}`);
+
+    return () => {
+      body.classList.remove(`mood-bg-${currentMood}`);
+    };
+  }, [currentMood]);
+
   const handleMoodSubmit = async () => {
     if (!moodDescription.trim()) return;
     

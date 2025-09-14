@@ -113,34 +113,34 @@
 }
 
 @layer components {
-  /* Mood Gradients */
+  /* Mood Gradients - High specificity to override body background */
   .mood-bg-happy {
-    background: linear-gradient(135deg, hsl(var(--happy-start)), hsl(var(--happy-end)));
+    background: linear-gradient(135deg, hsl(var(--happy-start)), hsl(var(--happy-end))) !important;
     animation: gradient-shift var(--gradient-speed) ease-in-out infinite;
   }
   
   .mood-bg-calm {
-    background: linear-gradient(135deg, hsl(var(--calm-start)), hsl(var(--calm-end)));
+    background: linear-gradient(135deg, hsl(var(--calm-start)), hsl(var(--calm-end))) !important;
     animation: gradient-shift var(--gradient-speed) ease-in-out infinite;
   }
   
   .mood-bg-energetic {
-    background: linear-gradient(135deg, hsl(var(--energetic-start)), hsl(var(--energetic-end)));
+    background: linear-gradient(135deg, hsl(var(--energetic-start)), hsl(var(--energetic-end))) !important;
     animation: gradient-shift var(--gradient-speed) ease-in-out infinite;
   }
   
   .mood-bg-sad {
-    background: linear-gradient(135deg, hsl(var(--sad-start)), hsl(var(--sad-end)));
+    background: linear-gradient(135deg, hsl(var(--sad-start)), hsl(var(--sad-end))) !important;
     animation: gradient-shift var(--gradient-speed) ease-in-out infinite;
   }
   
   .mood-bg-excited {
-    background: linear-gradient(135deg, hsl(var(--excited-start)), hsl(var(--excited-end)));
+    background: linear-gradient(135deg, hsl(var(--excited-start)), hsl(var(--excited-end))) !important;
     animation: gradient-shift var(--gradient-speed) ease-in-out infinite;
   }
   
   .mood-bg-peaceful {
-    background: linear-gradient(135deg, hsl(var(--peaceful-start)), hsl(var(--peaceful-end)));
+    background: linear-gradient(135deg, hsl(var(--peaceful-start)), hsl(var(--peaceful-end))) !important;
     animation: gradient-shift var(--gradient-speed) ease-in-out infinite;
   }
 

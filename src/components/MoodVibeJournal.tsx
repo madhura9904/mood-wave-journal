@@ -42,6 +42,25 @@ const MoodVibeJournal = () => {
     }
   }, [moodEntries]);
 
+  // Apply mood background to the entire page body
+  useEffect(() => {
+    const body = document.body;
+    const allMoodClasses = [
+      'mood-bg-happy',
+      'mood-bg-calm',
+      'mood-bg-energetic',
+      'mood-bg-sad',
+      'mood-bg-excited',
+      'mood-bg-peaceful',
+    ];
+    body.classList.remove(...allMoodClasses);
+    body.classList.add(`mood-bg-${currentMood}`);
+
+    return () => {
+      body.classList.remove(`mood-bg-${currentMood}`);
+    };
+  }, [currentMood]);
+
   const handleMoodSubmit = async () => {
     if (!moodDescription.trim()) return;
     
@@ -105,8 +124,9 @@ const MoodVibeJournal = () => {
   };
 
   return (
-    <div className={`min-h-screen transition-all duration-1000 mood-bg-${currentMood}`}>
-      <div className="container mx-auto px-4 py-8">
+    <div className={`min-h-screen relative transition-all duration-1000`}>
+      <div className={`fixed inset-0 z-0 mood-bg-${currentMood} pointer-events-none`} aria-hidden="true" />
+      <div className="relative z-10 container mx-auto px-4 py-8">
         <header className="text-center mb-8">
           <h1 className="text-5xl font-bold text-white mb-2 animate-float">
             MoodVibe Journal
